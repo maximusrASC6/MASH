@@ -1,25 +1,44 @@
+let home = ["Mansion", "Shack", "House", "Apartment"]
+let cars = ["Box", "Towel", "Broken Mini Van", "Rolling Chair"]
  function mash() {
 
-     return " You will live in a " + getHome(place) + ", and you will have " + getChildrenCount(count) + ", kids from" 
+     return " You will live in a " + getHome() + ", and you will have " + getChildren() + " kids from "  + getSpouse() +  " different women. You will drive a " + getCar() + " to " 
 
  }
- let places = ["Mansion", "Apartment", "Shack", "House"]
-     places = places[Math.floor(Math.random()*places.length)];
 
- function getHome(places){
-      return places
+ let range = 0
+ function randomizer(range) {
+     return Math.floor(Math.random() * (range + 1))
+
+ }
+ 
+function getHome() {
+    if(Math.random() >= .5)
+        return home[randomizer(home.length-1)];
+    else
+        return process.argv[2]
 }
-let count = Math.floor((Math.random()*100) + 0)
 
- function getChildrenCount(count) {
-     return count
- }
+function getChildren() {
+    let chance = Math.random();
+    if(chance >= .5)
+        return randomizer(100);
+    else
+        return process.argv[3]
+}
 
+    function getCar() {
+        if(Math.random() >= .5)
+            return cars[randomizer(cars.length-1)]
+        else
+            return process.argv[4]
 
+}
 
- let child = getChildrenCount(count)
- let place = getHome(places)
- let result = mash();
-console.log(result, place, child);
-
-
+function getSpouse() {
+        return randomizer(10);
+ 
+}
+    
+    console.log(mash())
+    
